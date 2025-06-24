@@ -9,7 +9,7 @@ Welcome to the Algorithms and Programming II course project at Fırat University
 ## Learning Objectives
 
 This project is designed to help you:
-
+asdasdasdas
 - Implement complex algorithms in Python
 - Create interactive visualizations that demonstrate algorithm behavior
 - Analyze and understand the time and space complexity of algorithms
