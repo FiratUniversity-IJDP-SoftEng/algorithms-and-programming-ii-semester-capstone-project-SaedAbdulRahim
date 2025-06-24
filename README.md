@@ -33,7 +33,7 @@ For integers, the algorithm works in base 𝑏 (usually 10 for decimal numbers),
 
 ### Pseudocode
 
-```
+```python
 RadixSort(arr):
     max_len = length of longest element in arr
 
