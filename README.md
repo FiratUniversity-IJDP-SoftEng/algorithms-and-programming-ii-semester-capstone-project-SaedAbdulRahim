@@ -17,15 +17,15 @@ Radix Sort solves the problem of sorting a list of integers or strings efficient
 
 ### Algorithm Steps
 
-1. Find the maximum length: Determine the number of digits (for integers) or characters (for strings) to process.
-2. Pad strings if necessary: For strings, pad shorter ones with spaces to equalize length.
-3. Process each digit/character from least significant to most significant:
+1. ***Find the maximum length***: Determine the number of digits (for integers) or characters (for strings) to process.
+2. ***Pad strings if necessary***: For strings, pad shorter ones with spaces to equalize length.
+3. ***Process each digit/character from least significant to most significant***:
 
-   Group elements into buckets based on the current digit or character.
+   • Group elements into buckets based on the current digit or character.
 
-   Collect elements from buckets back into a list while preserving order.
-4. Repeat until all digit/character positions are processed.
-5. Remove padding from strings (if applied) to restore original data.
+   • Collect elements from buckets back into a list while preserving order.
+4. ***Repeat*** until all digit/character positions are processed.
+5. ***Remove padding*** from strings (if applied) to restore original data.
 
 ### Pseudocode
 
@@ -53,20 +53,23 @@ RadixSort(arr):
 
 ### Time Complexity
 
-- **Best Case:** O(...) - [Explanation]
-- **Average Case:** O(...) - [Explanation]
-- **Worst Case:** O(...) - [Explanation]
+• **Best Case:** O(nk) - The algorithm always processes every digit or character of every element, so even the best case requires scanning all n elements over k digits or characters.
+• **Average Case:** O(nk) - Radix Sort consistently performs passes over all digits or characters, making average complexity linear relative to input size and digit length.
+• **Worst Case:** O(nk) - Similarly, the worst case requires sorting on all digits/characters without shortcuts.
 
 ### Space Complexity
 
-- O(...) - [Explanation]
+• O(nk) - Extra space is needed for the buckets that temporarily hold elements during each pass, plus space for padding in strings if applicable, where n is the number of elements and k is the number of digits or max string length.
+
+
 
 ## Features
 
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
-...
+• Interactive visualization of Radix Sort for both integers and strings
+• Step-by-step display of sorting passes with bucket contents
+• Supports variable-length strings with automatic padding
+• User input validation with clear error messages
+• Clear display of sorted output after each sorting step
 
 ## Screenshots
 
@@ -195,9 +198,9 @@ A live demo of this application is available at: [Insert Streamlit Cloud URL her
 
 ## Author
 
-- **Name:** [Your Name]
-- **Student ID:** [Your Student ID]
-- **GitHub:** [Your GitHub Username]
+- **Name:** Saed Abdul Rahim
+- **Student ID:** 230543606
+- **GitHub:** SaedAbdulRahim
 
 ## Acknowledgements
 
