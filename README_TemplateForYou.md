@@ -2,15 +2,14 @@
 
 ## Project Overview
 
-This project is an interactive web application that implements and visualizes [Algorithm Name], developed as part of the Algorithms and Programming II course at Fırat University, Software Engineering Department.
+This project is an interactive web application that implements and visualizes Radix Sort Algorithm, developed as part of the Algorithms and Programming II course at Fırat University, Software Engineering Department.
 
 ## Algorithm Description
 
-[Provide a comprehensive explanation of your algorithm here. Include the following elements:]
 
 ### Problem Definition
 
-[Clearly define the problem that the algorithm solves]
+Radix Sort solves the problem of sorting a list of integers or strings efficiently without directly comparing the elements. It orders the elements based on their individual digits or characters, handling variable-length inputs and large datasets effectively.
 
 ### Mathematical Background
 
@@ -18,15 +17,36 @@ This project is an interactive web application that implements and visualizes [A
 
 ### Algorithm Steps
 
-1. [Step 1 with explanation]
-2. [Step 2 with explanation]
-3. [Step 3 with explanation]
-...
+1. Find the maximum length: Determine the number of digits (for integers) or characters (for strings) to process.
+2. Pad strings if necessary: For strings, pad shorter ones with spaces to equalize length.
+3. Process each digit/character from least significant to most significant:
+
+   Group elements into buckets based on the current digit or character.
+
+   Collect elements from buckets back into a list while preserving order.
+4. Repeat until all digit/character positions are processed.
+5. Remove padding from strings (if applied) to restore original data.
 
 ### Pseudocode
 
 ```
-[Include pseudocode representation of your algorithm]
+RadixSort(arr):
+    max_len = length of longest element in arr
+
+    for position from max_len - 1 down to 0:
+        buckets = array of empty lists indexed by digit/character value
+
+        for element in arr:
+            key = digit or character at position in element (pad if necessary)
+            buckets[key].append(element)
+
+        arr = concatenate all buckets in order
+
+    if arr contains padded strings:
+        remove padding from elements
+
+    return arr
+
 ```
 
 ## Complexity Analysis
