@@ -13,7 +13,9 @@ Radix Sort solves the problem of sorting a list of integers or strings efficient
 
 ### Mathematical Background
 
-[Explain any mathematical concepts, formulas, or notation relevant to understanding the algorithm]
+Radix Sort is a non-comparative sorting algorithm that processes numbers (or strings) digit by digit. It relies on the concept of place value in number representation, sorting elements based on individual digits starting from the least significant digit to the most significant digit (LSD approach). Each digit is sorted using a stable sorting method (commonly Counting Sort).
+
+For integers, the algorithm works in base 𝑏 (usually 10 for decimal numbers), and for strings, it considers characters as values from an alphabet set. The sorting order is determined by comparing digits or characters at each position.
 
 ### Algorithm Steps
 
@@ -24,8 +26,10 @@ Radix Sort solves the problem of sorting a list of integers or strings efficient
    • Group elements into buckets based on the current digit or character.
 
    • Collect elements from buckets back into a list while preserving order.
-4. ***Repeat*** until all digit/character positions are processed.
-5. ***Remove padding*** from strings (if applied) to restore original data.
+   
+5. ***Repeat*** until all digit/character positions are processed.
+   
+7. ***Remove padding*** from strings (if applied) to restore original data.
 
 ### Pseudocode
 
@@ -75,7 +79,9 @@ RadixSort(arr):
 
 ![Main Interface](pictures/RadixSort-MainInterface.png)
 
+
 *This interface allows users to select the input type (integers or strings), enter a comma-separated list, and visualize the step-by-step execution of the Radix Sort algorithm.*
+
 
 ![Algorithm in Action](pictures/RadixSort-AlgorithmInAction.png)
 
