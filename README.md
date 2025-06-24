@@ -57,35 +57,45 @@ RadixSort(arr):
 
 ### Time Complexity
 
-• **Best Case:** O(nk) - The algorithm always processes every digit or character of every element, so even the best case requires scanning all n elements over k digits or characters.
-• **Average Case:** O(nk) - Radix Sort consistently performs passes over all digits or characters, making average complexity linear relative to input size and digit length.
-• **Worst Case:** O(nk) - Similarly, the worst case requires sorting on all digits/characters without shortcuts.
+• **Best Case:** 𝑂(𝑑 × (𝑛 + 𝑏)) -  Even when the input is already sorted, Radix Sort must process every digit of every element, so the time depends on the number of digits `𝑑`, number of elements 
+`𝑛`, and the base `𝑏` (radix).
 
+• **Average Case:** 𝑂(𝑑 × (𝑛 + 𝑏)) - Typically, Radix Sort performs the same operations regardless of the initial order because it sorts digit by digit, scanning all elements and buckets each pass.
+
+• **Worst Case:** 𝑂(𝑑 × (𝑛 + 𝑏)) - The algorithm’s performance does not degrade due to input distribution; it always processes every digit for all elements.
+
+**Where:**
+- `𝑑` number of digits.
+- `𝑛` number of elements.
+- `𝑏` base/radix.
 ### Space Complexity
 
-• O(nk) - Extra space is needed for the buckets that temporarily hold elements during each pass, plus space for padding in strings if applicable, where n is the number of elements and k is the number of digits or max string length.
+• 𝑂(𝑑 × (𝑛 + 𝑏)) - Extra space is needed for the buckets that temporarily hold elements during each pass, plus space for padding in strings if applicable, where n is the number of elements and k is the number of digits or max string length.
 
 
 
 ## Features
 
 • Interactive visualization of Radix Sort for both integers and strings
+
 • Step-by-step display of sorting passes with bucket contents
+
 • Supports variable-length strings with automatic padding
+
 • User input validation with clear error messages
+
 • Clear display of sorted output after each sorting step
 
 ## Screenshots
 
 ![Main Interface](pictures/RadixSort-MainInterface.png)
+***This interface allows users to select the input type (integers or strings), enter a comma-separated list, and visualize the step-by-step execution of the Radix Sort algorithm.***
 
-
-*This interface allows users to select the input type (integers or strings), enter a comma-separated list, and visualize the step-by-step execution of the Radix Sort algorithm.*
-
+-------------------------------------------------------------------------------------------------
 
 ![Algorithm in Action](pictures/RadixSort-AlgorithmInAction.png)
 
-*"Step-by-step visualization of Radix Sort processing the input `[3, 21, 9]`. The algorithm sorts numbers by distributing them into buckets based on each digit position (from least to most significant). Top: Initial grouping by units digit (1s place). Bottom: Final grouping by tens digit (10s place), producing the sorted output `[3, 9, 21]`."*
+**"Step-by-step visualization of Radix Sort processing the input `[3, 21, 9]`. The algorithm sorts numbers by distributing them into buckets based on each digit position (from least to most significant). Top: Initial grouping by units digit (1s place). Bottom: Final grouping by tens digit (10s place), producing the sorted output `[3, 9, 21]`."***
 
 ## Installation
 
