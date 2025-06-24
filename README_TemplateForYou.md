@@ -1,4 +1,4 @@
-# [Radix Sort Visualization] - Interactive Visualization
+# [Radix Sort] - Interactive Visualization
 
 ## Project Overview
 
