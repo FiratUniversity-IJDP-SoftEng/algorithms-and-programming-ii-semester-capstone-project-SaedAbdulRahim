@@ -1,4 +1,4 @@
-# [Your Algorithm Name] - Interactive Visualization
+# [Radix Sort Visualization] - Interactive Visualization
 
 ## Project Overview
 
