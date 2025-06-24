@@ -222,7 +222,7 @@ def visualize_integer_sort(arr):
 This project includes a test suite to verify the correctness of the algorithm implementation:
 
 ```bash
-python -m unittest test_algorithm.py
+python -m unittest test-algorithm.py
 ```
 
 ### Test Cases
