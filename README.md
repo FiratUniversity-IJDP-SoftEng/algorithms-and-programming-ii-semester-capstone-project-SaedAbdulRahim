@@ -73,11 +73,13 @@ RadixSort(arr):
 
 ## Screenshots
 
-![Main Interface](docs/screenshots/main_interface.png)
-*Caption describing the main interface*
+![Main Interface](pictures/RadixSort-MainInterface.png)
 
-![Algorithm in Action](docs/screenshots/algorithm_demo.png)
-*Caption describing the algorithm in action*
+*This interface allows users to select the input type (integers or strings), enter a comma-separated list, and visualize the step-by-step execution of the Radix Sort algorithm.*
+
+![Algorithm in Action](pictures/RadixSort-AlgorithmInAction.png)
+
+*"Step-by-step visualization of Radix Sort processing the input `[3, 21, 9]`. The algorithm sorts numbers by distributing them into buckets based on each digit position (from least to most significant). Top: Initial grouping by units digit (1s place). Bottom: Final grouping by tens digit (10s place), producing the sorted output `[3, 9, 21]`."*
 
 ## Installation
 
@@ -90,8 +92,8 @@ RadixSort(arr):
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repository.git
-   cd your-repository
+   git clone https://github.com/FiratUniversity-IJDP-SoftEng/algorithms-and-programming-ii-semester-capstone-project-SaedAbdulRahim.git
+   cd algorithms-and-programming-ii-semester-capstone-project-SaedAbdulRahim
    ```
 
 2. Create a virtual environment:
@@ -117,37 +119,86 @@ RadixSort(arr):
 
 ## Usage Guide
 
-1. [Step 1 of using the application]
-2. [Step 2 of using the application]
-3. [Step 3 of using the application]
-...
+1. Open the application by running streamlit run app.py in your terminal.
+2. Select the input type: **Integers** or **Strings**.
+3. Enter a comma-separated list of numbers or words in the input box.
+4. Watch the visualization display the sorting process step-by-step.
+5. View the final sorted result shown below the visualization.
+6. To sort a new list, simply enter new values and repeat.
 
 ### Example Inputs
 
-- [Example 1 with expected output]
-- [Example 2 with expected output]
-- [Example 3 with expected output]
+- **Integers:**
+
+  Input: `170, 45, 75, 90, 802, 24, 2, 66`
+  
+  Output: `[2, 24, 45, 66, 75, 90, 170, 802]`
+- **Strings:**
+- 
+  Input: `banana, apple, orange, grape, kiwi`
+  
+  Expected Output: `[apple, banana, grape, kiwi, orange]`
+  
+- **Short Integer List:**
+  
+   Input: `3, 21, 9`
+  
+   Expected Output: `[3, 9, 21]`
 
 ## Implementation Details
 
 ### Key Components
 
-- `algorithm.py`: Contains the core algorithm implementation
-- `app.py`: Main Streamlit application
-- `utils.py`: Helper functions for data processing
-- `visualizer.py`: Functions for visualization
+- `algorithm.py`: Contains the core algorithm implementation.
+- `app.py`: Main Streamlit application.
+- `utils.py`: Helper functions for data processing.
+- `visualizer.py`: Functions for visualization.
+- `test_algorithm.py`: Unit tests verifying the correctness of the sorting algorithms for various inputs.
 
 ### Code Highlights
 
 ```python
-# Include a few key code snippets that demonstrate the most important parts of your implementation
-def key_function(parameter):
+def radix_sort_integers(arr):
     """
-    Docstring explaining what this function does
+    Performs Radix Sort on a list of integers.
+    Sorts numbers digit by digit starting from the least significant digit.
     """
-    # Implementation with comments explaining the logic
-    result = process(parameter)
-    return result
+    if not arr:
+        return []
+    max_length = len(str(max(arr)))
+    for digit in range(max_length):
+        buckets = [[] for _ in range(10)]
+        for num in arr:
+            buckets[(num // 10**digit) % 10].append(num)
+        arr = [num for bucket in buckets for num in bucket]
+    return arr
+
+def visualize_integer_sort(arr):
+    """
+    Visualizes each step of the Radix Sort for integers using Streamlit.
+    Shows how numbers are distributed into buckets by digit.
+    """
+    import streamlit as st
+    import pandas as pd
+    import time
+
+    max_num = max(arr) if arr else 0
+    exp = 1
+    step = 1
+    while max_num // exp > 0:
+        st.markdown(f"### Step {step}: Sorting by digit at exp = {exp}")
+        buckets = [[] for _ in range(10)]
+        for num in arr:
+            index = (num // exp) % 10
+            buckets[index].append(num)
+        bucket_df = pd.DataFrame({f'Bucket {i}': pd.Series(buckets[i]) for i in range(10)})
+        st.dataframe(bucket_df)
+        arr = [num for bucket in buckets for num in bucket]
+        st.success(f"After Step {step}: {arr}")
+        exp *= 10
+        step += 1
+        time.sleep(1)
+    return arr
 ```
 
 ## Testing
@@ -160,41 +211,55 @@ python -m unittest test_algorithm.py
 
 ### Test Cases
 
-- [Test case 1 description]
-- [Test case 2 description]
-- [Test case 3 description]
+- **Test integers sorting:**
+  
+Sorts the list `[170, 45, 75, 90, 802, 24, 2, 66]` and expects the sorted output `[2, 24, 45, 66, 75, 90, 170, 802]`.
+
+- **Test strings sorting:**
+  
+Sorts the list `["dog", "cat", "apple", "banana"]` and expects the sorted output `['apple', 'banana', 'cat', 'dog']`.
+
+
+- **Test empty inputs:**
+  
+Checks that sorting an empty list for both integers and strings returns an empty list `[]`.
 
 ## Live Demo
 
-A live demo of this application is available at: [Insert Streamlit Cloud URL here]
+A live demo of this application is available at: [Streamlit](https://saedabdulrahimradix.streamlit.app/)
 
 ## Limitations and Future Improvements
 
 ### Current Limitations
 
-- [Limitation 1]
-- [Limitation 2]
-- [Limitation 3]
+- The string radix sort only supports lowercase English letters and space characters.
+- Visualization speed is fixed and may not be adjustable by the user.
+- The application does not handle special characters or Unicode beyond basic ASCII.
 
 ### Planned Improvements
 
-- [Improvement 1]
-- [Improvement 2]
-- [Improvement 3]
+- Support for uppercase letters and extended character sets in string sorting.
+
+- Customizable visualization speed and step control
+
+
+- Enhanced user interface with more detailed explanations and animations
 
 ## References and Resources
 
 ### Academic References
 
-1. [Reference 1]
-2. [Reference 2]
-3. [Reference 3]
+1. [Hacettepe University - Introduction to Computer Science](https://web.cs.hacettepe.edu.tr/~bbm101/)
+   
+3. [MIT OpenCourseWare - Introduction to CS and Programming Using Python (Fall 2022)](https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/lists/lecture-notes/)
 
 ### Online Resources
 
-- [Resource 1]
-- [Resource 2]
-- [Resource 3]
+- [VisuAlgo — Algorithm Visualizations](https://visualgo.net/en)
+  
+- [Streamlit Official Documentation](https://docs.streamlit.io)
+
+- [GitHub Classroom Guide](https://education.github.com/classroom)
 
 ## Author
 
@@ -204,7 +269,7 @@ A live demo of this application is available at: [Insert Streamlit Cloud URL her
 
 ## Acknowledgements
 
-I would like to thank Assoc. Prof. Ferhat UÇAR for guidance throughout this project, and [any other acknowledgements].
+I would like to thank Assoc. Prof. Ferhat UÇAR for guidance throughout this project, and for his continuous encouragement and insightful feedback that greatly contributed to my learning experience..
 
 ---
 
